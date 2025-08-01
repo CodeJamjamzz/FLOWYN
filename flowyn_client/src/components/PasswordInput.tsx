@@ -2,10 +2,12 @@ import { Fragment } from "react/jsx-runtime";
 
 interface Props {
   margin: string;
-  placeholder : string,
+  placeholder : string;
+  setPassword: (password: string) => void;
+  password : string;
 }
 
-export const PasswordInput = ({ margin, placeholder }: Props) => {
+export const PasswordInput = ({ margin, placeholder, setPassword, password }: Props) => {
   return (
     <Fragment>
       <label className={`input validator w-full ${margin}`}>
@@ -31,6 +33,10 @@ export const PasswordInput = ({ margin, placeholder }: Props) => {
           placeholder={placeholder}
           pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
           title="Must be more than 8 characters, including number, lowercase letter, uppercase letter"
+          value={password}
+          onChange={(e) => {
+            setPassword(e.target.value);
+          }}  
         />
       </label>
       {/* <p className="validator-hint hidden">

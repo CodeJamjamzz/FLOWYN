@@ -1,17 +1,16 @@
-import { Fragment } from "react/jsx-runtime";
-
 interface Props {
   type?: string;
+  className?: string;
 }
 
-export const Divider = ({ type = "" }: Props) => {
+export const Divider = ({ type = "", className = "" }: Props) => {
   return (
-    <Fragment>
+    <div className={className}>
       {type !== "" ? (
         <div className={`divider divider-${type}`}></div>
       ) : (
         <div className="divider"></div>
       )}
-    </Fragment>
+    </div>
   );
 };

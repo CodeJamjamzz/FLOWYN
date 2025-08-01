@@ -2,9 +2,11 @@ import { Fragment } from "react/jsx-runtime";
 
 interface Props {
   margin: string;
+  setUsername: (username: string) => void;
+  username: string;
 }
 
-export const UserNameInput = ({ margin }: Props) => {
+export const UserNameInput = ({ margin, setUsername, username }: Props) => {
   return (
     <Fragment>
       <label className={`input validator w-full ${margin}`}>
@@ -28,12 +30,14 @@ export const UserNameInput = ({ margin }: Props) => {
           type="text"
           required
           placeholder="Username"
-          pattern="[A-Za-z][A-Za-z0-9\-]*"
           title="Only letters, numbers or dash"
           className="w-full"
+          value={username}
+          onChange={(e) => {
+            setUsername(e.target.value);
+          }}
         />
       </label>
-    
     </Fragment>
   );
 };
